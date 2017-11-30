@@ -19,14 +19,16 @@
 </template>
 
 <script>
-export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+
+    export default {
+      name: 'app',
+      data () {
+        return {
+          msg: 'Welcome to Your Vue.js App'
+        }
+      }
     }
-  }
-}
+
 </script>
 
 <style>
