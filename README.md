@@ -7,6 +7,4 @@ The project is open source under the [Apache 2.0](https://github.com/FriendCode/
 
 ## How to install diorama IDE
 
-...
-
-
+...test
