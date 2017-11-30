@@ -7,9 +7,12 @@
         "url": "git+https://github.com/ThomasDelap/dioramaIDE.git"
     },
     "license": "Apache",
-    "script": {
-        "dev": "webpack-dev-server --open --hot",
-        "build": ""
+    "scripts": {
+        "dev": "webpack-dev-server --open --hot --port 8081",
+        "start": "webpack & electron .",
+        "t" : "electron-webpack dev",
+        "a": "electron . & webpack",
+        "electron": "webpack --config webpack.config.js && electron ."
     },
     "devDependencies": {
         "babel-core": "^6.26.0",
@@ -17,12 +20,14 @@
         "babel-preset-env": "^1.6.0",
         "babel-preset-stage-3": "^6.24.1",
         "electron": "^1.6.10",
+        "electron-reload": "^1.0.2",
         "vue-loader": "^13.5.0",
+        "css-loader": "^0.28.7",
+        "vue-template-compiler": "^2.0.0",
         "webpack": "^3.6.0",
         "webpack-dev-server": "^2.9.1"
     },
     "dependencies": {
-        "css-loader": "^0.28.7",
         "vue": "^2.4.4"
     }
 }

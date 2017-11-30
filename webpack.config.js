@@ -1,30 +1,27 @@
 const path = require('path');
 
 module.exports = {
-    devServer: {
-        contentBase: "./src",
-        inline: true
-    },
+
+    watch: true,
 
     entry: './src/index.js',
+
+    devServer: {
+        contentBase: "./dist",
+        hot: true
+    },
+
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'main.js',
-        publicPath: '/dist/'
+        path: path.resolve('dist'),
+        filename: 'main.js'
     },
 
     module: {
-        rules : [
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/
-            },
+        loaders: [
             {
                 test: /\.vue$/,
-                loader: 'vue-loader',
-                exclude: /node_modules/
-            },
+                loader: 'vue-loader'
+            }
         ]
     }
 }
