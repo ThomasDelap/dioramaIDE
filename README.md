@@ -6,5 +6,3 @@ Integer sed arcu consequat ipsum consequat pretium non id quam. Cras imperdiet t
 The project is open source under the [Apache 2.0](https://github.com/FriendCode/codebox/blob/master/LICENSE) license.
 
 ## How to install diorama IDE
-
-...test
