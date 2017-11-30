@@ -29,7 +29,7 @@ export default {
 }
 </script>
 
-<style{{#sass}} lang="scss"{{/sass}}>
+<style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
