@@ -8986,7 +8986,7 @@ module.exports = function normalizeComponent (
   name: 'app',
   data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js'
     };
   }
 });
@@ -9001,7 +9001,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "app" } }, [
-    _c("h1", [_vm._v("\\" + _vm._s(_vm.msg))]),
+    _c("h1", [_vm._v(_vm._s(_vm.msg))]),
     _vm._v(" "),
     _c("h2", [_vm._v("Essential Links")]),
     _vm._v(" "),
