@@ -1,31 +1,29 @@
 const path = require('path');
 
 module.exports = {
+  devServer: {
+    contentBase: "./src",
+    inline: true,
+    historyApiFallback: true
+  },
 
-    entry: './src/index.js',
-    watch: true,
-    target: 'electron',
+  entry: './src/index.js',
 
-    devServer: {
-        contentBase: "./dist",
-        hot: true
-    },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'main.js',
+    publicPath: '/dist/'
+  },
 
-    output: {
-        path: __dirname + '/dist',
-        publicPath: 'dist/',
-        filename: 'main.js'
-    },
-
-    module: {
-        rules: [
-            {
-                test: /\.jsx?$/,
-                loader: 'babel-loader',
-                options: {
-                    presets: ['react']
-                }
-            }
-        ]
-    }
+  module: {
+    loaders: [{
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['react', 'es2015', 'stage-0']
+        }
+      }
+    ]
+  }
 }

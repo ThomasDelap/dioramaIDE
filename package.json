@@ -1,29 +1,34 @@
 {
-    "name": "dioramaIDE",
-    "version": "0.0.0",
-    "main": "main.js",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/ThomasDelap/dioramaIDE.git"
-    },
-    "license": "Apache",
-    "scripts": {
-        "start": "npm run dev | npm run electron",
-        "dev": "webpack --watch",
-        "electron": "electron ."
-    },
-    "devDependencies": {
-        "babel-core": "^6.23.1",
-        "babel-loader": "^6.4.1",
-        "babel-preset-react": "^6.23.0",
-        "babel-preset-stage-3": "^6.24.1",
-        "css-loader": "^0.28.7",
-        "electron": "^1.6.10",
-        "electron-reload": "^1.0.2",
-        "webpack": "^3.9.1"
-    },
-    "dependencies": {
-        "react": "^16.2.0",
-        "react-dom": "^16.2.0"
-    }
+  "name": "dioramaIDE",
+  "version": "0.0.0",
+  "license": "Apache",
+  "main": "main.js",
+  "scripts": {
+    "clean": "rm -rf dist/",
+    "start": "npm run build | npm run electron",
+    "build": "webpack --optimize-minimize --watch",
+    "electron": "electron .",
+    "web": "webpack-dev-server --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThomasDelap/dioramaIDE/"
+  },
+  "devDependencies": {
+    "babel-core": "*",
+    "babel-loader": "*",
+    "babel-preset-es2015": "*",
+    "babel-preset-react": "*",
+    "babel-preset-stage-0": "*",
+    "electron": "^1.7.9",
+    "electron-reload": "^1.2.2",
+    "webpack": "*",
+    "webpack-dev-server": "*"
+  },
+  "dependencies": {
+    "react": "*",
+    "react-dom": "*",
+    "redux": "*",
+    "redux-thunk": "*"
+  }
 }
