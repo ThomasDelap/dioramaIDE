@@ -1,5 +1,5 @@
 const electron = require('electron')
-const {app, BrowserWindow} = electron
+const {app, BrowserWindow, remote} = electron
 
 // devServer
 require('electron-reload')(__dirname, {
@@ -9,6 +9,8 @@ require('electron-reload')(__dirname, {
 let mainWindow;
 app.on('ready', () => {
 
-    let mainWindow = new BrowserWindow({width: 800, height: 600})
-    mainWindow.loadURL(`file://${__dirname}/dist/index.html`)
+    let mainWindow = new BrowserWindow({width: 800, height: 600});
+    mainWindow.loadURL(`file://${__dirname}/dist/index.html`);
+    mainWindow.toggleDevTools();
+    mainWindow.setMenu(null);
 });

@@ -1,7 +1,10 @@
 const path = require('path');
 
 module.exports = {
+
     entry: './src/index.js',
+    watch: true,
+    target: 'electron',
 
     devServer: {
         contentBase: "./dist",
@@ -9,15 +12,19 @@ module.exports = {
     },
 
     output: {
-        path: path.resolve('dist'),
+        path: __dirname + '/dist',
+        publicPath: 'dist/',
         filename: 'main.js'
     },
 
     module: {
-        loaders: [
+        rules: [
             {
-                test: /\.vue$/,
-                loader: 'vue-loader'
+                test: /\.jsx?$/,
+                loader: 'babel-loader',
+                options: {
+                    presets: ['react']
+                }
             }
         ]
     }

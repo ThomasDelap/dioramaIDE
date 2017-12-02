@@ -1,7 +1,8 @@
-import Vue from 'vue'
-import App from './components/App.vue'
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-new Vue({
-  el: '#app',
-  render: h => h(App)
-});
+import AppLayout from './components/App';
+
+ReactDOM.render(<AppLayout />,
+    document.getElementById('app')
+);
