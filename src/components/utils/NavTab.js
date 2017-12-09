@@ -16,6 +16,10 @@ export default class NavTab extends React.Component {
             ...this.state,
             active: !this.state.active
         });
+
+        /*
+        var electron = window.require('electron');
+        electron.remote.getCurrentWindow().toggleDevTools();*/
     }
 
     render(){

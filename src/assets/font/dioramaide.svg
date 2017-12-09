@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2017 by original authors @ fontello.com</metadata>
+<defs>
+<font id="dioramaide" horiz-adv-x="1000" >
+<font-face font-family="dioramaide" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="folder-open" unicode="&#xe805;" d="M0 680v-741a89 89 0 0 1 89-89h1138a89 89 0 0 1 89 89v652a89 89 0 0 1-89 89h-713l-37 117a76 76 0 0 1-72 53h-289a76 76 0 0 1-71-49z" horiz-adv-x="1316" />
+
+<glyph glyph-name="gear" unicode="&#xe806;" d="M964 434l-83 3c-20 0-30 6-35 6a355 355 0 0 1-32 80 50 50 0 0 0 15 28l61 57a38 38 0 0 1 2 54l-69 74a38 38 0 0 1-54 1l-61-56c-15-15-26-18-29-21a356 356 0 0 1-79 34 50 50 0 0 0-10 31l3 83a38 38 0 0 1-37 39l-101 3a38 38 0 0 1-39-37l-3-83c0-21-6-30-6-35a354 354 0 0 1-74-29 50 50 0 0 0-28 15l-56 62a38 38 0 0 1-54 2l-75-68a38 38 0 0 1-2-54l56-62c14-15 17-25 20-29a356 356 0 0 1-33-73 50 50 0 0 0-32-9l-83 5a38 38 0 0 1-40-36l0-2a38 38 0 0 1-1-5l0-19-5-75a47 47 0 0 1 38-47l21 6 60-4c21-1 31-7 35-7a355 355 0 0 1 33-85 50 50 0 0 0-16-29l-61-56a38 38 0 0 1-3-54l69-74a38 38 0 0 1 54-2l61 56c15 14 26 17 30 20a356 356 0 0 1 78-34 50 50 0 0 0 10-31l-4-84a38 38 0 0 1 37-39l101-4a38 38 0 0 1 39 37l4 83c1 20 6 30 6 35a355 355 0 0 1 80 32 50 50 0 0 0 29-16l56-61a38 38 0 0 1 54-2l74 69a38 38 0 0 1 2 54l-56 61c-15 15-17 26-21 29a356 356 0 0 1 34 79 50 50 0 0 0 31 10l83-4a38 38 0 0 1 40 37l3 101a38 38 0 0 1-37 40z m-463-275a191 191 0 1 0 190 191 191 191 0 0 0-190-191z" horiz-adv-x="1001" />
+
+<glyph glyph-name="down-open" unicode="&#xf004;" d="M0 533q0 25 18 43t44 18 42-18l305-303 304 303q18 18 43 18t43-18q18-18 18-43t-18-43l-390-391-391 391q-18 19-18 43z" horiz-adv-x="817.4" />
+
+<glyph glyph-name="up-open" unicode="&#xf005;" d="M0 167q0 26 18 43l391 391 390-391q17-17 17-43 0-26-17-44-18-17-44-17t-43 17l-303 305-305-305q-18-17-43-17t-43 17q-18 18-18 44z" horiz-adv-x="816.9" />
+
+<glyph glyph-name="right-open" unicode="&#xf006;" d="M0 0q0 25 18 43l305 304-305 304q-18 18-18 44t18 43 44 18 43-18l390-391-390-391q-19-18-43-18t-44 18q-18 18-18 44z" horiz-adv-x="495.1" />
+
+<glyph glyph-name="left-open" unicode="&#xf007;" d="M0 353l391 391q18 18 43 18 24 0 43-18 18-18 18-44t-18-43l-304-304 304-305q18-17 18-43t-18-43q-18-18-43-18t-43 18z" horiz-adv-x="495.1" />
+</font>
+</defs>
+</svg>

@@ -15,32 +15,44 @@ export default class Filetree extends React.Component {
         };
     }
 
-    componentDidMount(){
-
-        this.loadFolder();
-    }
-
     /**
-     * @description Load folder to the module
-     * @param path
+     * @description Load folder data when creating the module
      */
-    loadFolder(path){
+    componentDidMount(){
         var os = require('os');
         var path = require('path');
+        var filePath = path.join(os.homedir(), 'Desktop', 'defold-examples-master', 'alien-world');
 
-        this.setState({
-            ...this.state,
-            treeview: this.walk(path.join(os.homedir(), 'Desktop', 'defold-examples-master', 'diorama_js'))
+        this.loadFolder(filePath).then((folderData) => {
+            var {treeview} = this.state;
+            treeview.push(folderData);
+
+            console.log(folderData);
+
+            this.setState({
+                ...this.state,
+                treeview
+            });
         });
     }
 
     /**
-     * @description Recursively deep map
-     * @param dir
-     */
-    walk(dir){
+    * @description Load folder to the module
+    * @param path
+    */
+    loadFolder(path){
+        return new Promise((resolve, reject) => {
+            resolve({name: 'diorama_js', depth: 0, nodes: this.walk(path)});
+        });
+    }
+
+    /**
+    * @description Recursively deep map
+    * @param dir
+    */
+    walk(dir, depth = 1){
         var results = [];
-        var list = fs.readdirSync(dir)
+        var list = fs.readdirSync(dir);
 
         list.forEach((file) => {
 
@@ -49,23 +61,24 @@ export default class Filetree extends React.Component {
 
             if(stat.isDirectory()){
                 results.push(
-                    {name: file, type: 'folder', nodes: this.walk(filePath)});
-            } else {
-                results.push(
-                    {name: file, type: this.getExtension(file)}
-                );
-            }
-        });
-        return [{
-            name: path.basename(dir),
-            nodes: results
-        }];
-    }
+                    {name: file, type: 'folder', depth, nodes: this.walk(filePath, depth + 1)});
+                } else {
+                    results.push(
+                        {name: file, depth, type: this.getExtension(file)}
+                    );
+                }
+            });
+
+            results.sort(function(a,b){
+                return ((a.type == 'folder') - (b.type == 'folder')) || (a.name.toString().localeCompare(b.name));
+            }).reverse();
+            return results;
+        }
 
     /*
-     * @description Get extension for the type of the file
-     * @param fileName
-     */
+    * @description Get extension for the type of the file
+    * @param fileName
+    */
     getExtension(fileName){
         return fileName.split('.').pop();
     }
@@ -73,19 +86,12 @@ export default class Filetree extends React.Component {
     render(){
         return (
 
-            <section className="filetree">
-                <div>
-                    <h2>Assets</h2>
-                </div>
-
-                <ul className="filetree-wrapper">
-                    {this.state.treeview.map((item, i) => (
-                        <Treenode data={item} key={i} />
-                    ))}
-                </ul>
-            </section>
+            <ul className="filetree filetree-wrapper">
+                {this.state.treeview.map((item, i) => (
+                    <Treenode data={item} key={i} active={true} />
+                ))}
+            </ul>
 
         )
     }
-
 }

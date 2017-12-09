@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf dist/",
     "start": "npm run build | npm run electron",
-    "build": "webpack --optimize-minimize --watch",
+    "build": "webpack --watch",
     "electron": "electron .",
     "web": "webpack-dev-server --hot"
   },

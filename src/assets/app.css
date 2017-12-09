@@ -1,60 +1,115 @@
 *,*:before,*:after{margin: 0; padding: 0; box-sizing: border-box;}
 
-body{text-rendering: optimizeLegibility; user-select: none;}
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url("SourceSansPro-Regular.ttf");
+}
 
-.app{height: 100vh; width: 100vw; background: linear-gradient(45deg, #1a1c2a, #1d1f29); overflow: hidden; font-family: 'Lato', sans-serif; font-weight: lighter; color: white;
- display: flex; flex-direction: column; -webkit-font-smoothing: antialiased; cursor: default; font-size: 13px;}
+@font-face {
+  font-family: 'dioramaide';
+  src: url('./font/dioramaide.eot?80373076');
+  src: url('./font/dioramaide.eot?80373076#iefix') format('embedded-opentype'),
+       url('./font/dioramaide.woff2?80373076') format('woff2'),
+       url('./font/dioramaide.woff?80373076') format('woff'),
+       url('./font/dioramaide.ttf?80373076') format('truetype'),
+       url('./font/dioramaide.svg?80373076#dioramaide') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.is-hover{background: red;}
+
+body{text-rendering: optimizeLegibility!important; user-select: none;}
+
+.app{height: 100vh; width: 100vw; background-color: #1b1a1c; overflow: hidden; font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300; color: white; display: flex; flex-direction: column; -webkit-font-smoothing: antialiased; cursor: default; font-size: 13px;}
 
     .nav{padding: 0 10px; z-index: 1; font-size: 12px;}
         .nav-item{color: white; flex-direction: column; position: relative; outline: 0;}
-            .nav-item a{padding: 0 12px; height: 31px; display: inline-flex; align-items: center; color: #cccccc;}
+            .nav-item a{padding: 0 12px; height: 31px; display: inline-flex; align-items: center; color: #b0b0b0;}
             .nav-item a:hover{color: white;}
 
-            .menu-sub{background-color: #0f111a; position: absolute; left: 0; display: none; box-shadow: 0 6px 8px 2px rgba(0, 0, 0, .16);
+            .menu-sub{background-color: #1b1a1c; position: absolute; left: 0; display: none; box-shadow: 0 6px 20px 0 rgba(0, 0, 0, .16);
                 min-width: 240px; padding: 4px 0; z-index: 0;}
 
-                .menu-sub-group:not(:last-child){border-bottom: 1px solid rgba(255, 255, 255, .05); padding-bottom: 8px; margin-bottom: 8px;}
-                .menu-sub li{height: 28px; line-height: 28px; padding: 0 12px; white-space: nowrap;
+                .menu-sub-group:not(:last-child){border-bottom: 1px solid rgba(255, 255, 255, .05); padding-bottom: 2px; margin-bottom: 2px;}
+                .menu-sub li{height: 30px; line-height: 30px; padding: 0 12px; white-space: nowrap;
                     display: flex; flex-direction: row; justify-content: space-between;}
                 .menu-shortcut{margin-left: 12px; color: rgba(255, 255, 255, .35);}
 
             .nav-item.is-active a{background-color: #303f4f;}
             .nav-item.is-active .menu-sub{display: block;}
             .menu-sub li.is-disabled{color: rgba(255, 255, 255, .35);}
-            .menu-sub li:not(.is-disabled):hover{background: black;}
+            .menu-sub li:not(.is-disabled):hover{background-color: #303035;}
 
-    .main{display: flex; flex-direction: row; flex: 1;}
-        .main h2{font-size: 13px; font-weight: lighter; height: 42px; line-height: 42px; margin-left: 16px;}
+    .main{flex-direction: row; flex: 1;}
+        .main h2{font-size: 12px; font-weight: lighter; letter-spacing: .025em; height: 42px; line-height: 42px; padding-left: 16px; }
+
+        .layout{display: flex; flex-direction: row; flex: 1;}
+            .layout hr{border: none; min-width: 16px; cursor: w-resize;}
+            .layout-vertical{flex-direction: column;}
+                .layout-vertical hr{min-height: 2px; cursor: s-resize; background-color: #1b1a1c;}
+            .layout>div{flex-basis: auto;}
+
+            .panel{background-color: #27272b; min-width: 320px; overflow: auto; flex-grow: 1; flex-shrink: 0;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .canvas{overflow: hidden; display: flex; flex-direction: column;}
+            .canvas-tabs{height: 42px;}
+                .canvas-tab-item{height: 42px; display: inline-block; line-height: 42px; font-size: 13px; padding: 0 16px; color: white;}
+                    .canvas-tab-item i{font-size: 12px; margin-left: 8px; color: #cccccc;}
+                .canvas-tab-item.is-active{ box-shadow: inset 0 -2px 0 #419bf9;}
+
+            .canvas-wrapper{flex: 1; display: flex; flex-direction: row;}
+                .canvas-content{background-color: #27272b; overflow: hidden;}
+                .canvas-properties{background-color: #27272b;}
+
+
+
+
+
+            .filetree span{display: block; color: #cccccc;
+                height: 28px; line-height: 28px;}
+
+
+            .filetree span:hover, .filetree li.is-active>span{
+                color: white;}
+
+            .filetree ul{display: none;}
+            .filetree li.is-active>ul{display: block;}
 
     .footer{display: flex; flex-direction: row; justify-content: space-between; color: #cccccc; font-size: 13px; padding: 0 10px;}
         .footer>div{height: 31px; display: flex; flex-direction: row; align-items: center;}
-        .footer-information p{margin-right: 12px;}
-            .footer-information-file{font-size: 11px;}
+        .footer-information p{margin-right: 12px; color: #52575c;}
 
         .footer-actions p{display: inline-block; height: 100%; display: flex; align-items: center; padding: 0 10px;}
             .footer-actions p:hover{background-color: rgba(255, 255, 255, .1);}
 
-    .filetree ul{list-style: none;}
-        .filetree ul span{display: block;}
 
-        .filetree ul>li>span{padding-left: 16px;}
-        .filetree ul>li>ul>li span{padding-left: 32px;}
-        .filetree ul>li>ul>li>ul>li span{padding-left: 64px;}
-        .filetree ul>li>ul>li>ul>li>ul>li span{padding-left: 96px;}
-        .filetree ul>li>ul>li>ul>li>ul>li>ul>li span{padding-left: 128px;}
+    .icon::before{
+        font-family: "dioramaide";
+        float: left;
+        font-weight: normal;
+        font-style: normal;
+        color: inherit;
+    }
 
-        .filetree ul span:hover{background: black;}
-
-
-        .canvas{flex: 1; display: flex; flex-direction: column;}
-            .canvas-tabs{}
-                .tab-item{height: 42px; display: inline-block; line-height: 42px; font-size: 13px; padding: 0 16px; color: white;}
-                .tab-item.is-active{ box-shadow: inset 0 -2px 0 #6d87de;}
-
-            .canvas-wrapper{flex: 1; background: linear-gradient(25deg, #080a11, #0f111a); padding: 6px;}
-
-            .canvas-splitter{border: none; width: 12px; cursor: w-resize;}
-
-            .canvas-properties{width: 320px; background-color: #303f4f;}
-
-        .filetree{width: 320px; margin-right: 16px; overflow-y: hidden;}
+    .icon-folder:before{content: '\e805';}
+    .icon-module:before {content: '\e806'; }
+    .icon-arrow-down:before { content: '\f004'; } /* '' */
+    .icon-arrow-up:before { content: '\f005'; } /* '' */
+    .icon-arrow-left:before { content: '\f006'; } /* '' */
+    .icon-arrow-right:before { content: '\f007'; } /* '' */

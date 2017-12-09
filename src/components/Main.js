@@ -1,36 +1,43 @@
 import React from 'react';
 
-import FiletreeModule from './modules/Filetree';
+import Viewtree from './modules/Filetree';
+import Properties from './modules/Properties';
+import {Layout, Panel, PanelTab, TabNavigation, TabContent} from './utils/Layout';
 
-export default class Main extends React.Component {
+export default class Main extends React.PureComponent {
 
     render(){
         return (
 
-            <main className="main">
-                <FiletreeModule />
+            <Layout className="main">
 
-                <hr className="canvas-splitter" />
+                <Panel init-ratio="320">
+                    <Viewtree name="Assets"/>
+                    <Properties name="Test"/>
+                </Panel>
 
-                <div className="canvas">
-                    <section className="canvas-tabs">
-                        <span className="tab-item is-active">Menu.scene</span>
-                        <span className="tab-item">Sprite.module</span>
-                    </section>
+                <PanelTab className="canvas" init-ratio="100%">
 
-                    <section className="canvas-wrapper">
-                        <img src="../src/assets/code.png" />
-                    </section>
-                </div>
+                    <TabNavigation className="canvas-tabs" base={(
+                            <span className="canvas-tab-item %is-active%">%name%<i className="fa fa-times"></i></span>
+                        )}>
+                    </TabNavigation>
 
-                <hr className="canvas-splitter" />
+                    <Layout className="canvas-wrapper">
 
-            <div className="canvas-properties">
-                <h2>Properties</h2>
-            </div>
-            </main>
+                        <TabContent className="canvas-content" init-ratio="100%">
+                            <img src="../src/assets/code.png" />
+                        </TabContent>
+
+                        <Panel init-ratio="320">
+                            <Properties name="Outline" />
+                            <Properties name="Properties"/>
+                            <Properties name="Test"/>
+                        </Panel>
+                    </Layout>
+                </PanelTab>
+            </Layout>
 
         )
     }
-
 }

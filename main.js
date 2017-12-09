@@ -13,4 +13,5 @@ app.on('ready', () => {
     mainWindow.loadURL(`file://${__dirname}/dist/index.html`);
     mainWindow.toggleDevTools();
     mainWindow.setMenu(null);
+    mainWindow.maximize();
 });

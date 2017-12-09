@@ -3,8 +3,6 @@ import React from 'react';
 import MainLayout from './Main';
 import NavTab from './utils/NavTab';
 
-
-
 export default class App extends React.Component {
 
     render(){
@@ -65,7 +63,6 @@ export default class App extends React.Component {
                     </div>
 
                     <div className="footer-actions">
-                        <p>CRLF</p>
                         <p>UTF-8</p>
                         <p>Javascript with JSX</p>
                         <p>Launch debug</p>
