@@ -116,7 +116,6 @@ export default class Layout extends React.Component {
             });
             var newRatio = 0;
 
-            console.log((children[actual].offsetLeft - parent.offsetLeft))
             if(this.props.type == 'vertical'){
                 newRatio = ((e.clientY - parentBox.top)) - (children[actual].offsetTop - parent.offsetTop);
             } else {

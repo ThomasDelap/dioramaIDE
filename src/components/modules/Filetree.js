@@ -1,14 +1,16 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 import Treenode from './TreeNode';
+import actions from '../../actions/TabsAction';
 
 import * as fs from 'fs';
 import * as path from 'path';
 
-export default class Filetree extends React.Component {
+class Filetree extends React.Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
 
         this.state = {
             treeview: []
@@ -21,13 +23,11 @@ export default class Filetree extends React.Component {
     componentDidMount(){
         var os = require('os');
         var path = require('path');
-        var filePath = path.join(os.homedir(), 'Desktop', 'defold-examples-master', 'alien-world');
+        var filePath = path.join(os.homedir(), 'Desktop', 'defold-examples-master', 'runner');
 
         this.loadFolder(filePath).then((folderData) => {
             var {treeview} = this.state;
             treeview.push(folderData);
-
-            console.log(folderData);
 
             this.setState({
                 ...this.state,
@@ -40,9 +40,9 @@ export default class Filetree extends React.Component {
     * @description Load folder to the module
     * @param path
     */
-    loadFolder(path){
+    loadFolder(folderPath){
         return new Promise((resolve, reject) => {
-            resolve({name: 'diorama_js', depth: 0, nodes: this.walk(path)});
+            resolve({name: path.basename(folderPath), depth: 0, nodes: this.walk(folderPath)});
         });
     }
 
@@ -83,15 +83,40 @@ export default class Filetree extends React.Component {
         return fileName.split('.').pop();
     }
 
+    /**
+     * @description Add to tabulation the file with the type
+     * @params Object
+     */
+    createTabulation(object){
+
+        this.props.addTab(object);
+    }
+
+
     render(){
         return (
 
             <ul className="filetree filetree-wrapper">
                 {this.state.treeview.map((item, i) => (
-                    <Treenode data={item} key={i} active={true} />
+                    <Treenode data={item} key={i} active={true} handleAction={this.createTabulation.bind(this)}/>
                 ))}
             </ul>
 
         )
     }
 }
+
+const stateToProps = (state) => {
+    return {
+        tab: state.tab
+    }
+}
+
+const dispatchToProps = (dispatch) => {
+    return {
+        addTab: (tabs) => dispatch(actions.addTab(tabs)),
+        removeTab: (tabID) => dispatch(actions.removeTab(tabID))
+    }
+}
+
+export default connect(stateToProps, dispatchToProps)(Filetree);

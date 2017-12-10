@@ -1,41 +1,34 @@
 import React from 'react';
+import brace from 'brace';
+import AceEditor from 'react-ace';
+
+import 'brace/mode/javascript';
 
 import Viewtree from './modules/Filetree';
 import Properties from './modules/Properties';
+import ChangedFile from './modules/ChangedFile';
+
 import {Layout, Panel, PanelTab, TabNavigation, TabContent} from './utils/Layout';
 
 export default class Main extends React.PureComponent {
 
+    constructor(){
+        super();
+
+    }
+
     render(){
+
         return (
 
             <Layout className="main">
 
                 <Panel init-ratio="320">
-                    <Viewtree name="Assets"/>
-                    <Properties name="Test"/>
+                    <Viewtree name="Assets" init-ratio="75%" />
+                    <ChangedFile name="Help" />
                 </Panel>
 
-                <PanelTab className="canvas" init-ratio="100%">
-
-                    <TabNavigation className="canvas-tabs" base={(
-                            <span className="canvas-tab-item %is-active%">%name%<i className="fa fa-times"></i></span>
-                        )}>
-                    </TabNavigation>
-
-                    <Layout className="canvas-wrapper">
-
-                        <TabContent className="canvas-content" init-ratio="100%">
-                            <img src="../src/assets/code.png" />
-                        </TabContent>
-
-                        <Panel init-ratio="320">
-                            <Properties name="Outline" />
-                            <Properties name="Properties"/>
-                            <Properties name="Test"/>
-                        </Panel>
-                    </Layout>
-                </PanelTab>
+                <PanelTab className="canvas" init-ratio="100%" />
             </Layout>
 
         )

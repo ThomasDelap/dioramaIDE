@@ -34,7 +34,7 @@ export default class Panel extends React.Component {
         var start = e.dataTransfer.getData('text');
         var end = e.currentTarget.getAttribute('data-key');
 
-        if(start == end) return;
+        if(start == end || start == null || end == null) return;
 
         this.setState({
             ...this.state,
@@ -47,7 +47,7 @@ export default class Panel extends React.Component {
     }
 
     swapArray(a, b){
-        var result = this.state.components.slice();
+        var result = Array.from(this.state.components);
 
         result[a] = result.splice(b, 1, result[a])[0];
         return result;
@@ -58,14 +58,24 @@ export default class Panel extends React.Component {
         return (
             <Layout className="panel" type="vertical" style={this.props.style}>
                 {this.state.components.map((Component, i) => (
-                    <div onDragOver={this.allowDrop.bind(this)}>
-                        <h2 onDragStart={this.dragStart.bind(this)}
-                            draggable="true"
-                            data-key={i}>{(Component.props.name ? Component.props.name : 'Inconnue')}</h2>
+                    <div onDragOver={this.allowDrop.bind(this)} key={i} {...Component.props}>
 
-                        <div className="module-content" onDrop={this.drop.bind(this)} data-key={i}>
-                            {Component}
-                        </div>
+                        {Component.props.name &&
+                            <h2 onDragStart={this.dragStart.bind(this)}
+                                draggable="true" data-key={i}>{(Component.props.name ? Component.props.name : 'Inconnues')}</h2>
+                        }
+                        {Component.props.name ? (
+                            <div className="module-content" onDrop={this.drop.bind(this)} data-key={i}>
+                                {Component}
+                            </div>
+                        ) : (
+                            <div className="module-content"
+                                onDrop={this.drop.bind(this)}
+                                onDragStart={this.dragStart.bind(this)}
+                                draggable="true" data-key={i}>
+                                {Component}
+                            </div>
+                        )}
                     </div>
                 ))}
             </Layout>

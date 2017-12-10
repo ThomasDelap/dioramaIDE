@@ -6,7 +6,7 @@ import NavTab from './utils/NavTab';
 export default class App extends React.Component {
 
     render(){
-        var menu = [
+        const menu = [
             {name: 'File', tabs: [
                 [
                     {name: 'New...', shortcut: 'Ctrl+N'},
